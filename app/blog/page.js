@@ -2,10 +2,13 @@ import React from "react";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import fs from "fs";
+import matter from "gray-matter";
 
 const dirContent = fs.readdirSync("content", "utf-8");
 const blogs = dirContent.map((fileName) => {
-  const fileContent = readFileSync(`content/${fileName}`, "utf-8");
+  const fileContent = fs.readFileSync(`content/${fileName}`, "utf-8");
+  const { data } = matter(fileContent);
+  return data;
 });
 
 // const blogs = [
