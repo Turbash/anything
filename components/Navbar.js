@@ -40,7 +40,7 @@ const Navbar = () => {
   return (
     <nav className="p-4 bg-background/50 sticky top-0 backdrop-blur border-b z-10">
       <LoadingBar
-        color="#933cea"
+        color="var(--primary)"
         progress={progress}
         onLoaderFinished={() => setProgress(0)}
       />
@@ -49,10 +49,24 @@ const Navbar = () => {
           <div className="text-lg font-bold">SiegeBlog</div>
         </Link>
         <div className="md:flex space-x-4 hidden items-center">
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/blog">Blog</Link>
-          <Link href="/contact">Contact</Link>
+          <Link
+            href="/"
+            className="hover:scale-105 hover:font-semibold transition-transform duration-300"
+          >
+            Home
+          </Link>
+          <Link
+            href="/about"
+            className="hover:scale-105 hover:font-semibold transition-transform duration-300"
+          >
+            About
+          </Link>
+          <Link
+            href="/blog"
+            className="hover:scale-105 hover:font-semibold transition-transform duration-300"
+          >
+            Blog
+          </Link>
           <div className="flex items-center">
             <Button className="mx-1" variant="outline">
               Login
@@ -95,7 +109,6 @@ const Navbar = () => {
                 <Link href="/">Home</Link>
                 <Link href="/about">About</Link>
                 <Link href="/blog">Blog</Link>
-                <Link href="/contact">Contact</Link>
                 <div>
                   <Button className="mx-1 text-xs" variant="outline">
                     Login

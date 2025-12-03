@@ -3,8 +3,8 @@ import Image from "next/image";
 export default function About() {
   return (
     <div>
-      <div className="flex flex-col items-center justify-center py-32 bg-gray-100 dark:bg-gray-700 ">
-        <div className="w-full max-w-4xl p-8 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
+      <div className="flex flex-col items-center justify-center py-32 bg-muted/50">
+        <div className="w-full max-w-4xl p-8 bg-card shadow-lg rounded-lg border">
           <div className="flex flex-col md:flex-row">
             <div className="w-full md:w-1/3 flex justify-center items-center mb-8 md:mb-0 ">
               <div className="relative w-48 h-48 rounded-full overflow-hidden">
@@ -18,10 +18,10 @@ export default function About() {
               </div>
             </div>
             <div className="w-full md:w-2/3 flex flex-col justify-center ">
-              <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-4">
+              <h1 className="text-4xl font-bold text-card-foreground mb-4">
                 About Me
               </h1>
-              <p className="text-gray-600 dark:text-gray-50 text-lg mb-4">
+              <p className="text-muted-foreground text-lg mb-4">
                 Hello! I'm Harry, a passionate software developer and tech
                 enthusiast. I created this blog to share my experiences, tips,
                 and tutorials on various programming languages and technologies.
@@ -29,7 +29,7 @@ export default function About() {
                 here to help others on their path to mastering the art of
                 coding.
               </p>
-              <p className="text-gray-600 dark:text-gray-50 text-lg">
+              <p className="text-muted-foreground text-lg">
                 Whether you're just starting out or looking to sharpen your
                 skills, you'll find a variety of resources and insights here.
                 Let's explore the world of programming together!
@@ -39,13 +39,13 @@ export default function About() {
         </div>
       </div>
 
-      <section className="py-16 bg-gray-50 dark:bg-gray-800 dark:text-white">
+      <section className="py-16 bg-muted/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white">
+            <h2 className="text-3xl font-extrabold text-foreground">
               Harry's Journey as a Coder
             </h2>
-            <p className="mt-4 text-lg text-gray-600 dark:text-gray-50">
+            <p className="mt-4 text-lg text-muted-foreground">
               From curious beginner to seasoned developer, here's how Harry
               navigated the world of programming.
             </p>
@@ -53,17 +53,19 @@ export default function About() {
           <div className="space-y-12">
             <div className="flex flex-col md:flex-row items-center">
               <div className="md:w-1/3">
-                <img
+                <Image
                   src="/3.jpg"
                   alt="Harry as a beginner"
+                  width={400}
+                  height={300}
                   className="w-full rounded-lg shadow-lg"
                 />
               </div>
               <div className="md:w-2/3 md:pl-8 mt-8 md:mt-0">
-                <h3 className="text-2xl font-bold text-gray-800 dark:text-white dark:text-white">
+                <h3 className="text-2xl font-bold text-foreground">
                   The Spark of Curiosity
                 </h3>
-                <p className="mt-4 text-gray-600 dark:text-gray-50">
+                <p className="mt-4 text-muted-foreground">
                   Harry’s coding journey began in high school when he stumbled
                   upon his first programming language—Python. What started as a
                   simple curiosity quickly turned into a passion, as Harry spent
@@ -76,17 +78,19 @@ export default function About() {
 
             <div className="flex flex-col md:flex-row-reverse items-center">
               <div className="md:w-1/3">
-                <img
+                <Image
                   src="/2.jpg"
                   alt="Harry learning new skills"
+                  width={400}
+                  height={300}
                   className="w-full rounded-lg shadow-lg"
                 />
               </div>
               <div className="md:w-2/3 md:pr-8 mt-8 md:mt-0">
-                <h3 className="text-2xl font-bold text-gray-800 dark:text-white">
+                <h3 className="text-2xl font-bold text-foreground">
                   Diving Deeper
                 </h3>
-                <p className="mt-4 text-gray-600 dark:text-gray-50">
+                <p className="mt-4 text-muted-foreground">
                   After mastering the basics, Harry’s thirst for knowledge grew.
                   He began exploring more complex topics such as data
                   structures, algorithms, and web development. Enrolling in
@@ -99,17 +103,19 @@ export default function About() {
 
             <div className="flex flex-col md:flex-row items-center">
               <div className="md:w-1/3">
-                <img
+                <Image
                   src="/1.jpg"
                   alt="Harry working on a big project"
+                  width={400}
+                  height={300}
                   className="w-full rounded-lg shadow-lg"
                 />
               </div>
               <div className="md:w-2/3 md:pl-8 mt-8 md:mt-0">
-                <h3 className="text-2xl font-bold text-gray-800 dark:text-white">
+                <h3 className="text-2xl font-bold text-foreground">
                   Taking on Challenges
                 </h3>
-                <p className="mt-4 text-gray-600 dark:text-gray-50">
+                <p className="mt-4 text-muted-foreground">
                   With several years of experience under his belt, Harry began
                   tackling more significant challenges. From contributing to
                   open-source projects to developing his own applications, Harry
@@ -123,17 +129,19 @@ export default function About() {
 
             <div className="flex flex-col md:flex-row-reverse items-center">
               <div className="md:w-1/3">
-                <img
+                <Image
                   src="/4.jpg"
                   alt="Harry mentoring others"
+                  width={400}
+                  height={300}
                   className="w-full rounded-lg shadow-lg"
                 />
               </div>
               <div className="md:w-2/3 md:pr-8 mt-8 md:mt-0">
-                <h3 className="text-2xl font-bold text-gray-800 dark:text-white">
+                <h3 className="text-2xl font-bold text-foreground">
                   Giving Back
                 </h3>
-                <p className="mt-4 text-gray-600 dark:text-gray-50">
+                <p className="mt-4 text-muted-foreground">
                   Today, Harry is not only a proficient coder but also a mentor
                   to others. He regularly contributes to the programming
                   community by writing tutorials, giving talks, and helping new

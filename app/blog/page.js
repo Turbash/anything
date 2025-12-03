@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 import fs from "fs";
 import matter from "gray-matter";
@@ -47,20 +48,24 @@ const page = () => {
         {blogs.map((blog, index) => (
           <div
             key={index}
-            className="rounded-lg shadow-md overflow-hidden  dark:border-2"
+            className="rounded-lg shadow-md overflow-hidden bg-card border"
           >
-            <img
+            <Image
               src={blog.image}
               alt={blog.title}
+              width={400}
+              height={256}
               className="w-full h-64 object-cover"
             />
 
             <div className="p-4">
-              <h2 className="text-2xl font-bold mb-2">{blog.title}</h2>
+              <h2 className="text-2xl font-bold mb-2 text-card-foreground">
+                {blog.title}
+              </h2>
 
-              <p className=" mb-4">{blog.description}</p>
+              <p className="mb-4 text-muted-foreground">{blog.description}</p>
 
-              <div className="text-sm  mb-4">
+              <div className="text-sm mb-4 text-muted-foreground">
                 <span>By {blog.author}</span> |{" "}
                 <span>
                   {new Date(blog.date).toLocaleDateString("en-GB", {
