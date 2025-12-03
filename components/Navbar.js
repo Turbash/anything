@@ -23,6 +23,7 @@ const Navbar = () => {
         <div className="md:flex space-x-4 hidden items-center">
           <Link href="/">Home</Link>
           <Link href="/about">About</Link>
+          <Link href="/blog">Blog</Link>
           <Link href="/contact">Contact</Link>
           <div className="flex items-center">
             <Button className="mx-1" variant="outline">
@@ -65,6 +66,7 @@ const Navbar = () => {
               <div className="gap-6 flex flex-col items-center">
                 <Link href="/">Home</Link>
                 <Link href="/about">About</Link>
+                <Link href="/blog">Blog</Link>
                 <Link href="/contact">Contact</Link>
                 <div>
                   <Button className="mx-1 text-xs" variant="outline">
