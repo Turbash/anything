@@ -1,7 +1,28 @@
+"use client";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import Typed from "typed.js";
+import { use, useEffect, useRef } from "react";
 
 export default function Home() {
+  const el = useRef(null);
+
+  useEffect(() => {
+    const typed = new Typed(el.current, {
+      strings: [
+        "Coding",
+        "Web Development",
+        "Software Engineering",
+        "Data Science",
+        "Machine Learning",
+      ],
+      typeSpeed: 50,
+    });
+
+    return () => {
+      typed.destroy();
+    };
+  }, []);
   return (
     <main>
       <section className="container px-4 py-10 mx-auto lg:h-128 lg:space-x-8 lg:flex lg:items-center">
@@ -10,7 +31,7 @@ export default function Home() {
             A <span className="font-semibold">free repository</span> for
             community <br className="hidden lg:block" /> components using{" "}
             <span className="font-semibold underline decoration-primary">
-              <span />
+              <span ref={el} />
             </span>
           </h1>
           <p className="mt-4 text-lg text-gray-500 dark:text-gray-300">
