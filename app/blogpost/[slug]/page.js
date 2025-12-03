@@ -6,6 +6,8 @@ import rehypeFormat from "rehype-format";
 import rehypeStringify from "rehype-stringify";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
+import rehypePrettyCode from "rehype-pretty-code";
+import { transformerCopyButton } from "@rehype-pretty/transformers";
 import { unified } from "unified";
 
 export default async function Page({ params }) {
@@ -33,7 +35,16 @@ export default async function Page({ params }) {
     .use(remarkRehype)
     .use(rehypeDocument, { title: "👋🌍" })
     .use(rehypeFormat)
-    .use(rehypeStringify);
+    .use(rehypeStringify)
+    .use(rehypePrettyCode, {
+      theme: "github-dark",
+      transformers: [
+        transformerCopyButton({
+          visibility: "always",
+          feedbackDuration: 3_000,
+        }),
+      ],
+    });
 
   const htmlContent = (await processor.process(content)).toString();
 
