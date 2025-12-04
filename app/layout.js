@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Blog Website",
+  title: "SiegeBlog",
   description:
     "A blogging platform where you can share your posts with others and can see posts from others.",
 };

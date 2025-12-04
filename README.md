@@ -1,4 +1,4 @@
-# Blog Website
+# SiegeBlog
 
 ## A blogging platform where you can share your posts with others and can see posts from others.
 

@@ -1,156 +1,56 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { useSession } from "next-auth/react";
 
 export default function About() {
+  const { data: session } = useSession();
   return (
     <div>
-      <div className="flex flex-col items-center justify-center py-32 bg-muted/50">
-        <div className="w-full max-w-4xl p-8 bg-card shadow-lg rounded-lg border">
-          <div className="flex flex-col md:flex-row">
-            <div className="w-full md:w-1/3 flex justify-center items-center mb-8 md:mb-0 ">
-              <div className="relative w-48 h-48 rounded-full overflow-hidden">
-                <Image
-                  src="/logo.jpg"
-                  alt="Profile"
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-full"
-                />
-              </div>
-            </div>
-            <div className="w-full md:w-2/3 flex flex-col justify-center ">
-              <h1 className="text-4xl font-bold text-card-foreground mb-4">
-                About Me
-              </h1>
-              <p className="text-muted-foreground text-lg mb-4">
-                Hello! I'm Harry, a passionate software developer and tech
-                enthusiast. I created this blog to share my experiences, tips,
-                and tutorials on various programming languages and technologies.
-                I believe that learning should be a continuous journey, and I'm
-                here to help others on their path to mastering the art of
-                coding.
-              </p>
-              <p className="text-muted-foreground text-lg">
-                Whether you're just starting out or looking to sharpen your
-                skills, you'll find a variety of resources and insights here.
-                Let's explore the world of programming together!
-              </p>
-            </div>
+      <div className="flex flex-col items-center justify-center py-20 bg-linear-to-b from-primary/10 to-background">
+        <div className="w-full max-w-5xl px-8 text-center">
+          <h1 className="text-5xl font-bold text-foreground mb-6">
+            Welcome to SiegeBlog
+          </h1>
+          <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+            A community-driven blogging platform built for Siege participants to
+            document their 10-week journey of building amazing projects.
+          </p>
+          <div className="flex gap-4 justify-center">
+            <Link href={session ? "/create-post" : "/signup"}>
+              <Button size="lg" className="text-lg">
+                {session ? "Start Writing" : "Sign Up"}
+              </Button>
+            </Link>
+            <Link href="/blog">
+              <Button size="lg" variant="outline" className="text-lg">
+                Explore Blogs
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
 
-      <section className="py-16 bg-muted/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-extrabold text-foreground">
-              Harry's Journey as a Coder
+      <section className="py-16 bg-linear-to-b from-background to-muted/30">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-card/50 backdrop-blur-sm border rounded-lg shadow-lg p-8 md:p-12">
+            <h2 className="text-3xl font-bold text-card-foreground mb-6">
+              About This Project
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              From curious beginner to seasoned developer, here's how Harry
-              navigated the world of programming.
-            </p>
-          </div>
-          <div className="space-y-12">
-            <div className="flex flex-col md:flex-row items-center">
-              <div className="md:w-1/3">
-                <Image
-                  src="/3.jpg"
-                  alt="Harry as a beginner"
-                  width={400}
-                  height={300}
-                  className="w-full rounded-lg shadow-lg"
-                />
-              </div>
-              <div className="md:w-2/3 md:pl-8 mt-8 md:mt-0">
-                <h3 className="text-2xl font-bold text-foreground">
-                  The Spark of Curiosity
-                </h3>
-                <p className="mt-4 text-muted-foreground">
-                  Harry’s coding journey began in high school when he stumbled
-                  upon his first programming language—Python. What started as a
-                  simple curiosity quickly turned into a passion, as Harry spent
-                  countless hours experimenting with code, building small
-                  projects, and learning the fundamentals of software
-                  development.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex flex-col md:flex-row-reverse items-center">
-              <div className="md:w-1/3">
-                <Image
-                  src="/2.jpg"
-                  alt="Harry learning new skills"
-                  width={400}
-                  height={300}
-                  className="w-full rounded-lg shadow-lg"
-                />
-              </div>
-              <div className="md:w-2/3 md:pr-8 mt-8 md:mt-0">
-                <h3 className="text-2xl font-bold text-foreground">
-                  Diving Deeper
-                </h3>
-                <p className="mt-4 text-muted-foreground">
-                  After mastering the basics, Harry’s thirst for knowledge grew.
-                  He began exploring more complex topics such as data
-                  structures, algorithms, and web development. Enrolling in
-                  online courses and attending coding bootcamps, Harry quickly
-                  expanded his skill set, taking on freelance projects to apply
-                  his knowledge in real-world scenarios.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex flex-col md:flex-row items-center">
-              <div className="md:w-1/3">
-                <Image
-                  src="/1.jpg"
-                  alt="Harry working on a big project"
-                  width={400}
-                  height={300}
-                  className="w-full rounded-lg shadow-lg"
-                />
-              </div>
-              <div className="md:w-2/3 md:pl-8 mt-8 md:mt-0">
-                <h3 className="text-2xl font-bold text-foreground">
-                  Taking on Challenges
-                </h3>
-                <p className="mt-4 text-muted-foreground">
-                  With several years of experience under his belt, Harry began
-                  tackling more significant challenges. From contributing to
-                  open-source projects to developing his own applications, Harry
-                  continued to push his limits, always looking for opportunities
-                  to learn and grow. His journey wasn’t without its setbacks,
-                  but each obstacle was a stepping stone to becoming the skilled
-                  developer he is today.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex flex-col md:flex-row-reverse items-center">
-              <div className="md:w-1/3">
-                <Image
-                  src="/4.jpg"
-                  alt="Harry mentoring others"
-                  width={400}
-                  height={300}
-                  className="w-full rounded-lg shadow-lg"
-                />
-              </div>
-              <div className="md:w-2/3 md:pr-8 mt-8 md:mt-0">
-                <h3 className="text-2xl font-bold text-foreground">
-                  Giving Back
-                </h3>
-                <p className="mt-4 text-muted-foreground">
-                  Today, Harry is not only a proficient coder but also a mentor
-                  to others. He regularly contributes to the programming
-                  community by writing tutorials, giving talks, and helping new
-                  coders find their footing in the world of software
-                  development. For Harry, coding is more than just a
-                  profession—it’s a lifelong journey of learning and sharing
-                  knowledge.
-                </p>
-              </div>
+            <div className="space-y-4 text-muted-foreground text-lg">
+              <p>
+                Blog Website was created as a learning project to explore modern
+                web development technologies including Next.js, Supabase, and
+                NextAuth.
+              </p>
+              <p>
+                This platform can be used by Siege participants as a dedicated
+                space to: share their 10 week journey with each other, including
+                but not limited to what they build over the 10 weeks what did
+                they learn, etc.
+              </p>
             </div>
           </div>
         </div>

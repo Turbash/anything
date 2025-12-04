@@ -14,10 +14,10 @@ export default function Home() {
     const typed = new Typed(el.current, {
       strings: [
         "Coding",
-        "Web Development",
-        "Software Engineering",
-        "Data Science",
-        "Machine Learning",
+        "Fun Holidays",
+        "Siege Journey",
+        "Favourite Books",
+        "Recent Movies",
       ],
       typeSpeed: 50,
     });
@@ -48,8 +48,8 @@ export default function Home() {
       <section className="container px-4 py-10 mx-auto lg:h-128 lg:space-x-8 lg:flex lg:items-center">
         <div className="w-full text-center lg:text-left lg:w-1/2 lg:-mt-8">
           <h1 className="text-3xl leading-snug text-foreground md:text-4xl">
-            A <span className="font-semibold">free repository</span> for
-            community <br className="hidden lg:block" /> components using{" "}
+            A <span className="font-semibold">free platform</span> for sharing{" "}
+            <br className="hidden lg:block" /> blogs about{" "}
             <span className="font-semibold underline decoration-primary">
               <span ref={el} />
             </span>
@@ -84,6 +84,11 @@ export default function Home() {
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
               Choose the plan that suits you best
+            </p>
+            <p className="mt-4 text-sm text-muted-foreground">
+              This part is just for demonstration purposes and does not reflect
+              actual pricing. It was in the tutorial and it looked good so i
+              kept it.
             </p>
           </div>
           <div className="flex flex-wrap justify-center">
@@ -163,6 +168,11 @@ export default function Home() {
             <p className="mt-4 text-lg text-muted-foreground">
               Hear from our satisfied customers
             </p>
+            <p className="mt-4 text-sm text-muted-foreground">
+              This part is just for demonstration purposes and does not reflect
+              actual testimonials. It was in the tutorial and it looked good so
+              i kept it.
+            </p>
           </div>
           <div className="flex flex-wrap justify-center">
             <div className="w-full sm:w-1/2 lg:w-1/3 p-4">
@@ -172,7 +182,7 @@ export default function Home() {
                   recommend!"
                 </p>
                 <h3 className="mt-4 text-xl font-semibold text-card-foreground">
-                  John Doe
+                  Someone
                 </h3>
                 <p className="text-muted-foreground">CEO, Company A</p>
               </div>
@@ -184,7 +194,7 @@ export default function Home() {
                   were outstanding."
                 </p>
                 <h3 className="mt-4 text-xl font-semibold text-card-foreground">
-                  Jane Smith
+                  No one
                 </h3>
                 <p className="text-muted-foreground">
                   Marketing Director, Company B
@@ -198,7 +208,7 @@ export default function Home() {
                   the results."
                 </p>
                 <h3 className="mt-4 text-xl font-semibold text-card-foreground">
-                  Michael Brown
+                  Anyone
                 </h3>
                 <p className="text-muted-foreground">CTO, Company C</p>
               </div>
