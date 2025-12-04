@@ -15,10 +15,12 @@ import { ModeToggle } from "./ThemeBtn";
 import LoadingBar from "react-top-loading-bar";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+import { useSession, signOut } from "next-auth/react";
 
 const Navbar = () => {
   const [progress, setProgress] = useState(0);
   const pathname = usePathname();
+  const { data: session, status } = useSession();
 
   useEffect(() => {
     setProgress(30);
@@ -68,12 +70,37 @@ const Navbar = () => {
             Blog
           </Link>
           <div className="flex items-center">
-            <Button className="mx-1" variant="outline">
-              Login
-            </Button>
-            <Button className="mx-1" variant="outline">
-              Sign Up
-            </Button>
+            {status === "loading" ? (
+              <span className="text-sm text-muted-foreground">Loading...</span>
+            ) : session ? (
+              <>
+                <Link href="/dashboard">
+                  <Button className="mx-1" variant="outline">
+                    Dashboard
+                  </Button>
+                </Link>
+                <Button
+                  className="mx-1"
+                  variant="outline"
+                  onClick={() => signOut()}
+                >
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <>
+                <Link href="/login">
+                  <Button className="mx-1" variant="outline">
+                    Login
+                  </Button>
+                </Link>
+                <Link href="/signup">
+                  <Button className="mx-1" variant="outline">
+                    Sign Up
+                  </Button>
+                </Link>
+              </>
+            )}
             <ModeToggle />
           </div>
         </div>
@@ -110,12 +137,35 @@ const Navbar = () => {
                 <Link href="/about">About</Link>
                 <Link href="/blog">Blog</Link>
                 <div>
-                  <Button className="mx-1 text-xs" variant="outline">
-                    Login
-                  </Button>
-                  <Button className="mx-1 text-xs" variant="outline">
-                    Sign Up
-                  </Button>
+                  {session ? (
+                    <>
+                      <Link href="/dashboard">
+                        <Button className="mx-1 text-xs" variant="outline">
+                          Dashboard
+                        </Button>
+                      </Link>
+                      <Button
+                        className="mx-1 text-xs"
+                        variant="outline"
+                        onClick={() => signOut()}
+                      >
+                        Logout
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <Link href="/login">
+                        <Button className="mx-1 text-xs" variant="outline">
+                          Login
+                        </Button>
+                      </Link>
+                      <Link href="/signup">
+                        <Button className="mx-1 text-xs" variant="outline">
+                          Sign Up
+                        </Button>
+                      </Link>
+                    </>
+                  )}
                 </div>
               </div>
             </SheetContent>

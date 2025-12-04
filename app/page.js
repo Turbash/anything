@@ -40,16 +40,18 @@ export default function Home() {
             or landing sites!
           </p>
           <div className="mt-6 bg-transparent border border-border rounded-lg lg:w-2/3 focus-within:border-primary focus-within:ring focus-within:ring-primary focus-within:ring-opacity-20">
-            <form
+            {/* <form
               action="https://www.creative-tim.com/twcomponents/search"
               className="flex flex-wrap justify-between md:flex-row"
-            ></form>
+            ></form> */}
           </div>
         </div>
         <div className="w-full mt-4 lg:mt-0 lg:w-1/2">
-          <img
-            src="https://www.creative-tim.com/twcomponents/svg/website-designer-bro-purple.svg"
+          <Image
+            src="/website-designer-bro-purple.svg"
             alt="tailwind css components"
+            width={500}
+            height={500}
             className="w-full h-full max-w-md mx-auto"
           />
         </div>
@@ -70,9 +72,7 @@ export default function Home() {
                 <h3 className="text-2xl font-semibold text-card-foreground">
                   Basic
                 </h3>
-                <p className="mt-4 text-muted-foreground">
-                  $10/month
-                </p>
+                <p className="mt-4 text-muted-foreground">$10/month</p>
                 <ul className="mt-6 mb-6 space-y-4">
                   <li className="text-muted-foreground">
                     <s>10GB Storage</s>
@@ -83,12 +83,8 @@ export default function Home() {
                   <li className="text-muted-foreground">
                     <s>Single User</s>
                   </li>
-                  <li className="text-muted-foreground">
-                    Community Access
-                  </li>
-                  <li className="text-muted-foreground">
-                    Weekly Updates
-                  </li>
+                  <li className="text-muted-foreground">Community Access</li>
+                  <li className="text-muted-foreground">Weekly Updates</li>
                 </ul>
                 <Button className="mx-1" variant="outline">
                   Choose Plan
@@ -100,28 +96,16 @@ export default function Home() {
                 <h3 className="text-2xl font-semibold text-card-foreground">
                   Standard
                 </h3>
-                <p className="mt-4 text-muted-foreground">
-                  $20/month
-                </p>
+                <p className="mt-4 text-muted-foreground">$20/month</p>
                 <span className="inline-block px-3 py-1 text-sm font-semibold text-primary-foreground bg-primary rounded-full">
                   Bestseller
                 </span>
                 <ul className="mt-6 mb-6 space-y-4">
-                  <li className="text-muted-foreground">
-                    50GB Storage
-                  </li>
-                  <li className="text-muted-foreground">
-                    Priority Support
-                  </li>
-                  <li className="text-muted-foreground">
-                    Up to 5 Users
-                  </li>
-                  <li className="text-muted-foreground">
-                    Community Access
-                  </li>
-                  <li className="text-muted-foreground">
-                    Daily Updates
-                  </li>
+                  <li className="text-muted-foreground">50GB Storage</li>
+                  <li className="text-muted-foreground">Priority Support</li>
+                  <li className="text-muted-foreground">Up to 5 Users</li>
+                  <li className="text-muted-foreground">Community Access</li>
+                  <li className="text-muted-foreground">Daily Updates</li>
                 </ul>
                 <Button className="mx-1" variant="outline">
                   Choose Plan
@@ -133,25 +117,13 @@ export default function Home() {
                 <h3 className="text-2xl font-semibold text-card-foreground">
                   Premium
                 </h3>
-                <p className="mt-4 text-muted-foreground">
-                  $30/month
-                </p>
+                <p className="mt-4 text-muted-foreground">$30/month</p>
                 <ul className="mt-6 mb-6 space-y-4">
-                  <li className="text-muted-foreground">
-                    200GB Storage
-                  </li>
-                  <li className="text-muted-foreground">
-                    24/7 Support
-                  </li>
-                  <li className="text-muted-foreground">
-                    Unlimited Users
-                  </li>
-                  <li className="text-muted-foreground">
-                    Community Access
-                  </li>
-                  <li className="text-muted-foreground">
-                    Real-time Updates
-                  </li>
+                  <li className="text-muted-foreground">200GB Storage</li>
+                  <li className="text-muted-foreground">24/7 Support</li>
+                  <li className="text-muted-foreground">Unlimited Users</li>
+                  <li className="text-muted-foreground">Community Access</li>
+                  <li className="text-muted-foreground">Real-time Updates</li>
                 </ul>
                 <Button className="mx-1" variant="outline">
                   Choose Plan
@@ -182,9 +154,7 @@ export default function Home() {
                 <h3 className="mt-4 text-xl font-semibold text-card-foreground">
                   John Doe
                 </h3>
-                <p className="text-muted-foreground">
-                  CEO, Company A
-                </p>
+                <p className="text-muted-foreground">CEO, Company A</p>
               </div>
             </div>
             <div className="w-full sm:w-1/2 lg:w-1/3 p-4">
@@ -210,9 +180,7 @@ export default function Home() {
                 <h3 className="mt-4 text-xl font-semibold text-card-foreground">
                   Michael Brown
                 </h3>
-                <p className="text-muted-foreground">
-                  CTO, Company C
-                </p>
+                <p className="text-muted-foreground">CTO, Company C</p>
               </div>
             </div>
           </div>
@@ -223,9 +191,7 @@ export default function Home() {
         <div className="container px-4 mx-auto">
           <div className="container px-4 mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-foreground">
-                Top Blogs
-              </h2>
+              <h2 className="text-4xl font-bold text-foreground">Top Blogs</h2>
               <p className="mt-4 text-lg text-muted-foreground">
                 Check out our most popular blog posts
               </p>
@@ -234,8 +200,11 @@ export default function Home() {
           <div className="flex flex-wrap justify-center">
             <div className="w-full sm:w-1/2 lg:w-1/3 p-4">
               <div className="p-6 bg-card rounded-lg shadow-lg border transform transition duration-500 hover:scale-105">
-                <img
+                <Image
                   src="/typescript.webp"
+                  alt="Blog Post 1"
+                  width={400}
+                  height={256}
                   className="w-full h-64 object-cover rounded-t-lg"
                 />
                 <div className="mt-4">
@@ -254,9 +223,11 @@ export default function Home() {
             </div>
             <div className="w-full sm:w-1/2 lg:w-1/3 p-4">
               <div className="p-6 bg-card rounded-lg shadow-lg border transform transition duration-500 hover:scale-105">
-                <img
-                  src="https://images.pexels.com/photos/1181472/pexels-photo-1181472.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                <Image
+                  src="/pexels-photo-1181472.webp"
                   alt="Blog 2"
+                  width={400}
+                  height={256}
                   className="w-full h-64 object-cover rounded-t-lg"
                 />
                 <div className="mt-4">
@@ -275,9 +246,11 @@ export default function Home() {
             </div>
             <div className="w-full sm:w-1/2 lg:w-1/3 p-4">
               <div className="p-6 bg-card rounded-lg shadow-lg border transform transition duration-500 hover:scale-105">
-                <img
-                  src="https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg"
+                <Image
+                  src="/pexels-photo-3861972.jpeg"
                   alt="Blog 3"
+                  width={400}
+                  height={256}
                   className="w-full h-64 object-cover rounded-t-lg"
                 />
                 <div className="mt-4">
