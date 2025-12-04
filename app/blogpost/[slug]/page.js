@@ -11,6 +11,7 @@ import { transformerCopyButton } from "@rehype-pretty/transformers";
 import { unified } from "unified";
 import OnThisPage from "@/components/onthispage";
 import rehypeSlug from "rehype-slug";
+import { supabase } from "@/lib/supabase";
 
 export default async function Page({ params }) {
   //   const blog = {
@@ -23,14 +24,30 @@ export default async function Page({ params }) {
   //   };
 
   const { slug } = await params;
-  const filePath = `content/${slug}.md`;
+  // const filePath = `content/${slug}.md`;
 
-  if (!fs.existsSync(filePath)) {
+  // if (!fs.existsSync(filePath)) {
+  //   notFound();
+  // }
+  // const fileContent = fs.readFileSync(filePath, "utf-8");
+  // const { content, data } = matter(fileContent);
+  //   console.log(data, content);
+  const { data: post, error } = await supabase
+    .from("posts")
+    .select(
+      `
+      *,
+      users!posts_author_id_fkey (
+        name
+    )`
+    )
+    .eq("published", true)
+    .single();
+
+  console.log(post, error);
+  if (error || !post) {
     notFound();
   }
-  const fileContent = fs.readFileSync(filePath, "utf-8");
-  const { content, data } = matter(fileContent);
-  //   console.log(data, content);
 
   const processor = unified()
     .use(remarkParse)
@@ -49,19 +66,19 @@ export default async function Page({ params }) {
       ],
     });
 
-  const htmlContent = (await processor.process(content)).toString();
+  const htmlContent = (await processor.process(post.content)).toString();
 
   return (
     <div className="max-w-6xl mx-auto p-4">
-      <h1 className="text-4xl font-bold mb-4">{data.title}</h1>
+      <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
       <p className="text-base mb-2 border-l-4 border-muted-foreground pl-4 italic">
-        &quot;{data.description}&quot;
+        &quot;{post.description}&quot;
       </p>
       <div className="flex gap-2">
         <p className="text-sm text-muted-foreground mb-4 italic">
-          By {data.author}
+          By {post.users?.name || "Anonymous"}
         </p>
-        <p className="text-sm text-muted-foreground mb-4">{data.date}</p>
+        <p className="text-sm text-muted-foreground mb-4">{post.date}</p>
       </div>
       <div
         dangerouslySetInnerHTML={{ __html: htmlContent }}

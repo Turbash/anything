@@ -1,11 +1,14 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Typed from "typed.js";
-import { use, useEffect, useRef } from "react";
+import { use, useEffect, useRef, useState } from "react";
 
 export default function Home() {
   const el = useRef(null);
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const typed = new Typed(el.current, {
@@ -22,6 +25,23 @@ export default function Home() {
     return () => {
       typed.destroy();
     };
+  }, []);
+
+  useEffect(() => {
+    async function fetchPosts() {
+      try {
+        const response = await fetch("/api/posts?published=true");
+        if (response.ok) {
+          const data = await response.json();
+          setPosts(data.slice(0, 3));
+        }
+      } catch (error) {
+        console.error("Failed to fetch posts:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchPosts();
   }, []);
   return (
     <main>
@@ -189,85 +209,74 @@ export default function Home() {
 
       <section className="py-12 bg-muted/50">
         <div className="container px-4 mx-auto">
-          <div className="container px-4 mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-foreground">Top Blogs</h2>
-              <p className="mt-4 text-lg text-muted-foreground">
-                Check out our most popular blog posts
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-foreground">
+              Latest Blog Posts
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Check out our most recent community posts
+            </p>
+          </div>
+
+          {loading ? (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground">Loading posts...</p>
+            </div>
+          ) : posts.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground mb-4">
+                No posts yet. Be the first to create one!
               </p>
+              <Link href="/create-post">
+                <Button>Create Post</Button>
+              </Link>
             </div>
-          </div>
-          <div className="flex flex-wrap justify-center">
-            <div className="w-full sm:w-1/2 lg:w-1/3 p-4">
-              <div className="p-6 bg-card rounded-lg shadow-lg border transform transition duration-500 hover:scale-105">
-                <Image
-                  src="/typescript.webp"
-                  alt="Blog Post 1"
-                  width={400}
-                  height={256}
-                  className="w-full h-64 object-cover rounded-t-lg"
-                />
-                <div className="mt-4">
-                  <h3 className="text-xl font-semibold text-card-foreground">
-                    Blog Post Title 1
-                  </h3>
-                  <p className="mt-2 text-muted-foreground">
-                    A brief description of the blog post goes here. It should be
-                    engaging and informative.
-                  </p>
-                  <Button className="m-2" variant="outline" href="/blog-post-1">
-                    Read More
-                  </Button>
+          ) : (
+            <div className="flex flex-wrap justify-center">
+              {posts.map((post) => (
+                <div key={post.id} className="w-full sm:w-1/2 lg:w-1/3 p-4">
+                  <div className="p-6 bg-card rounded-lg shadow-lg border transform transition duration-500 hover:scale-105">
+                    {post.image && (
+                      <Image
+                        src={post.image}
+                        alt={post.title}
+                        width={400}
+                        height={256}
+                        className="w-full h-64 object-cover rounded-t-lg"
+                      />
+                    )}
+                    <div className="mt-4">
+                      <h3 className="text-xl font-semibold text-card-foreground">
+                        {post.title}
+                      </h3>
+                      <p className="mt-2 text-muted-foreground text-sm">
+                        By {post.users?.name || "Anonymous"} •{" "}
+                        {new Date(post.created_at).toLocaleDateString()}
+                      </p>
+                      <p className="mt-2 text-muted-foreground">
+                        {post.description}
+                      </p>
+                      <Link href={`/blogpost/${post.id}`}>
+                        <Button className="mt-4" variant="outline">
+                          Read More
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
-            <div className="w-full sm:w-1/2 lg:w-1/3 p-4">
-              <div className="p-6 bg-card rounded-lg shadow-lg border transform transition duration-500 hover:scale-105">
-                <Image
-                  src="/pexels-photo-1181472.webp"
-                  alt="Blog 2"
-                  width={400}
-                  height={256}
-                  className="w-full h-64 object-cover rounded-t-lg"
-                />
-                <div className="mt-4">
-                  <h3 className="text-xl font-semibold text-card-foreground">
-                    Blog Post Title 2
-                  </h3>
-                  <p className="mt-2 text-muted-foreground">
-                    A brief description of the blog post goes here. It should be
-                    engaging and informative.
-                  </p>
-                  <Button className="m-2" variant="outline" href="/blog-post-2">
-                    Read More
-                  </Button>
-                </div>
-              </div>
+          )}
+
+          {posts.length > 0 && (
+            <div className="text-center mt-8">
+              <Link href="/blog">
+                <Button variant="outline" size="lg">
+                  View All Posts
+                </Button>
+              </Link>
             </div>
-            <div className="w-full sm:w-1/2 lg:w-1/3 p-4">
-              <div className="p-6 bg-card rounded-lg shadow-lg border transform transition duration-500 hover:scale-105">
-                <Image
-                  src="/pexels-photo-3861972.jpeg"
-                  alt="Blog 3"
-                  width={400}
-                  height={256}
-                  className="w-full h-64 object-cover rounded-t-lg"
-                />
-                <div className="mt-4">
-                  <h3 className="text-xl font-semibold text-card-foreground">
-                    Blog Post Title 3
-                  </h3>
-                  <p className="mt-2 text-muted-foreground">
-                    A brief description of the blog post goes here. It should be
-                    engaging and informative.
-                  </p>
-                  <Button className="m-2" variant="outline" href="/blog-post-3">
-                    Read More
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
+          )}
         </div>
       </section>
     </main>

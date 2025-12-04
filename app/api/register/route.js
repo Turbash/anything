@@ -1,17 +1,17 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "@/lib/prisma";
 
 export async function POST(req) {
   try {
     const body = await req.json();
     const { name, email, password } = body;
 
-    console.log("Registration attempt:", { 
-      email, 
+    console.log("Registration attempt:", {
+      email,
       password: password,
       passwordType: typeof password,
-      passwordValue: JSON.stringify(password)
+      passwordValue: JSON.stringify(password),
     });
 
     if (!email || !password) {
@@ -24,9 +24,9 @@ export async function POST(req) {
     const hashedPassword = await bcrypt.hash(password + "", 10);
 
     const { data: existingUser } = await supabase
-      .from('users')
-      .select('id')
-      .eq('email', email)
+      .from("users")
+      .select("id")
+      .eq("email", email)
       .single();
 
     if (existingUser) {
@@ -37,7 +37,7 @@ export async function POST(req) {
     }
 
     const { data: user, error } = await supabase
-      .from('users')
+      .from("users")
       .insert({
         name: name || email.split("@")[0],
         email,

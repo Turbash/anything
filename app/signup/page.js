@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
@@ -32,7 +33,17 @@ export default function Signup() {
       if (!response.ok) {
         setError(data.error || "Something went wrong");
       } else {
-        router.push("/login?registered=true");
+        const result = await signIn("credentials", {
+          email,
+          password,
+          redirect: false,
+        });
+
+        if (result?.ok) {
+          router.push("/");
+        } else {
+          router.push("/login?registered=true");
+        }
       }
     } catch (error) {
       setError("Something went wrong");

@@ -74,9 +74,9 @@ const Navbar = () => {
               <span className="text-sm text-muted-foreground">Loading...</span>
             ) : session ? (
               <>
-                <Link href="/dashboard">
+                <Link href="/create-post">
                   <Button className="mx-1" variant="outline">
-                    Dashboard
+                    Create Post
                   </Button>
                 </Link>
                 <Button
@@ -139,9 +139,9 @@ const Navbar = () => {
                 <div>
                   {session ? (
                     <>
-                      <Link href="/dashboard">
+                      <Link href="/create-post">
                         <Button className="mx-1 text-xs" variant="outline">
-                          Dashboard
+                          Create Post
                         </Button>
                       </Link>
                       <Button

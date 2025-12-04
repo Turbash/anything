@@ -158,3 +158,87 @@ mark[data-highlighted-chars] {
 span[data-highlighted-line] {
   background-color: #80808036;
 }
+
+.EasyMDEContainer {
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+}
+
+.EasyMDEContainer .CodeMirror {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  padding: 1rem;
+  min-height: 400px;
+}
+
+.EasyMDEContainer .CodeMirror-cursor {
+  border-left-color: hsl(var(--foreground));
+}
+
+.EasyMDEContainer .CodeMirror-selected {
+  background-color: hsl(var(--accent));
+}
+
+.EasyMDEContainer .editor-toolbar {
+  background-color: hsl(var(--muted));
+  border: 1px solid hsl(var(--border));
+  border-bottom: none;
+  border-radius: var(--radius) var(--radius) 0 0;
+  opacity: 1;
+}
+
+.EasyMDEContainer .editor-toolbar button {
+  color: hsl(var(--foreground)) !important;
+  border: none;
+}
+
+.EasyMDEContainer .editor-toolbar button:hover,
+.EasyMDEContainer .editor-toolbar button.active {
+  background-color: hsl(var(--accent));
+  border-color: transparent;
+}
+
+.EasyMDEContainer .editor-toolbar i.separator {
+  border-left-color: hsl(var(--border));
+  border-right-color: hsl(var(--border));
+}
+
+.EasyMDEContainer .editor-preview,
+.EasyMDEContainer .editor-preview-side {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--border));
+}
+
+.EasyMDEContainer .CodeMirror-code .cm-header {
+  color: hsl(var(--primary));
+}
+
+.EasyMDEContainer .CodeMirror-code .cm-link {
+  color: hsl(var(--primary));
+}
+
+.EasyMDEContainer .CodeMirror-code .cm-url {
+  color: hsl(var(--primary));
+}
+
+.EasyMDEContainer .CodeMirror-code .cm-comment {
+  color: hsl(var(--muted-foreground));
+}
+
+.EasyMDEContainer .editor-toolbar.fullscreen,
+.EasyMDEContainer .CodeMirror-fullscreen {
+  background-color: hsl(var(--background));
+  z-index: 9999;
+}
+
+.editor-toolbar.fullscreen::before,
+.editor-toolbar.fullscreen::after {
+  background: linear-gradient(
+    to bottom,
+    hsl(var(--muted)),
+    transparent
+  ) !important;
+}
