@@ -42,6 +42,7 @@ export default async function Page({ params }) {
     )`
     )
     .eq("published", true)
+    .eq("id", slug)
     .single();
 
   console.log(post, error);
