@@ -20,7 +20,7 @@ Credits: https://www.youtube.com/watch?v=1g32IlH3SUs
 
 ## Demo
 
-Uploading recording_2025-12-05_11.16.54.mp4…
+https://github.com/user-attachments/assets/c9a2b7b4-915d-4299-acae-ecd095c30b59
 
 ## How to run locally
 
